@@ -8,7 +8,7 @@ public class PlaneManager{
     private List<PassengerPlane> passengerPlanesList= new ArrayList<>();
     private List<MilitaryPlane> militaryPlanesList= new ArrayList<>();
     private List<ExperimentalPlane> experimentalPlanesList = new ArrayList<>();
-    private  AddPlaneVisitor addVisitor = new AddPlaneVisitor(this);
+    private final AddPlaneVisitor addVisitor = new AddPlaneVisitor(this);
 
 
     public  void add(Plane plane) {
@@ -51,11 +51,11 @@ public class PlaneManager{
     }
 
 
-    public PassengerPlane getPlaneWithMostPassengersAboard() {
+    public PassengerPlane getPlaneWithMaxPassengersCapacity() {
         PassengerPlane planeWithMaxCapacity = passengerPlanesList.get(0);
-        for (int i = 0; i < passengerPlanesList.size(); i++) {
-            if (passengerPlanesList.get(i).getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
-                planeWithMaxCapacity = passengerPlanesList.get(i);
+        for (PassengerPlane passengerPlane : passengerPlanesList) {
+            if (passengerPlane.getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
+                planeWithMaxCapacity = passengerPlane;
             }
         }
 
@@ -64,9 +64,8 @@ public class PlaneManager{
 
     public List<MilitaryPlane> getMilitaryPlanesByType(MilitaryType type) {
         List<MilitaryPlane> planesOfType= new ArrayList<>();
-        for(int i=0; i<militaryPlanesList.size(); i++){
-            MilitaryPlane currPlane = militaryPlanesList.get(i);
-            if(currPlane.getType()==type){
+        for (MilitaryPlane currPlane : militaryPlanesList) {
+            if (currPlane.getType() == type) {
                 planesOfType.add(currPlane);
             }
         }
@@ -78,43 +77,29 @@ public class PlaneManager{
 
 
 
-    public List<Plane> sortByMaxDistance() {
+    public PlaneManager sortByMaxDistance() {
         List<Plane> planes = getPlanes();
 
-        Collections.sort(planes, new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxFlightDistance() - o2.getMaxFlightDistance();
-            }
-        });
+        planes.sort(Comparator.comparingInt(Plane::getMaxFlightDistance));
+        return this;
+    }
+
+    public List<Plane> getPlanesSortedByMaxSpeed() {
+        List<Plane> planes = getPlanes();
+        planes.sort(Comparator.comparingInt(Plane::getMaxSpeed));
         return planes;
     }
 
-    public PlaneManager sortByMaxSpeed() {
+    public List<Plane> getPlanesSortedByMaxLoadCapacity() {
         List<Plane> planes = getPlanes();
-        Collections.sort(planes, new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxSpeed() - o2.getMaxSpeed();
-            }
-        });
-        return this;
-    }
-
-    public PlaneManager sortByMaxLoadCapacity() {
-        List<Plane> planes = getPlanes();
-        Collections.sort(planes, new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxLoadCapacity() - o2.getMaxLoadCapacity();
-            }
-        });
-        return this;
+        planes.sort(Comparator.comparingInt(Plane::getMaxLoadCapacity));
+        return planes;
     }
 
 
 
     private void print(Collection<? extends Plane> collection) {
-        Iterator<? extends Plane> iterator = collection.iterator();
-        while (iterator.hasNext()) {
-            Plane plane = iterator.next();
+        for (Plane plane : collection) {
             System.out.println(plane);
         }
     }

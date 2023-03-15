@@ -5,7 +5,7 @@ import models.ExperimentalTypes;
 
 public class ExperimentalPlane extends Plane {
 
-    private ExperimentalTypes type;
+    private final ExperimentalTypes type;
     private ClassificationLevel classificationLevel;
 
     public ExperimentalPlane(PlaneEntry data, ExperimentalTypes type, ClassificationLevel classificationLevel) {
@@ -30,6 +30,10 @@ public class ExperimentalPlane extends Plane {
     @Override
     public int hashCode() {
         return super.hashCode();
+    }
+
+    public ExperimentalTypes getType() {
+        return type;
     }
 
     @Override

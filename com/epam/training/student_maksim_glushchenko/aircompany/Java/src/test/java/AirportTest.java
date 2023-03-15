@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AirportTest {
-    private static List<Plane> planes = Arrays.asList(
+    private final static List<Plane> planes = Arrays.asList(
             new PassengerPlane(new PlaneEntry("Boeing-737", 900, 12000, 60500), 164),
             new PassengerPlane(new PlaneEntry("Boeing-737-800", 940, 12300, 63870), 192),
             new PassengerPlane(new PlaneEntry("Boeing-747", 980, 16100, 70500), 242),
@@ -28,78 +28,61 @@ public class AirportTest {
             new ExperimentalPlane(new PlaneEntry("Ryan X-13 Vertijet", 560, 307, 500), ExperimentalTypes.VTOL, ClassificationLevel.TOP_SECRET)
     );
 
-    private static PassengerPlane planeWithMaxPassengerCapacity = new PassengerPlane(new PlaneEntry("Boeing-747", 980, 16100, 70500), 242);
+    private final static PassengerPlane planeWithMaxPassengerCapacity = new PassengerPlane(new PlaneEntry("Boeing-747", 980, 16100, 70500), 242);
 
     @Test
     public void testGetTransportMilitaryPlanes() {
-        PlaneManager planeManager = new PlaneManager();
-        for(Plane plane : planes){
-            planeManager.add(plane);
-        }
-        List<MilitaryPlane> transportMilitaryPlanes = planeManager.getTransportMilitaryPlanes();
-        boolean flag = false;
+        PlaneManager planeManager = new PlaneManager().addAll(planes);
+
+        PlaneManager militaryPlaneManager = new PlaneManager();
+        militaryPlaneManager.addAll(planeManager.getMilitaryPlanes());
+
+        PlaneManager passengerPlaneManager = new PlaneManager();
+        passengerPlaneManager.addAll(planeManager.getPassengerPlanes());
+
+        List<MilitaryPlane> transportMilitaryPlanes = planeManager.getMilitaryPlanesByType(MilitaryType.TRANSPORT);
         for (MilitaryPlane militaryPlane : transportMilitaryPlanes) {
-            if ((militaryPlane.getType() == MilitaryType.TRANSPORT)) {
-                flag = true;
-                break;
-            }
+            Assert.assertSame(militaryPlane.getType(), MilitaryType.TRANSPORT);
         }
-        Assert.assertEquals(flag, true);
+
     }
 
     @Test
     public void testGetPassengerPlaneWithMaxCapacity() {
-        System.out.println("TEST testGetPassengerPlaneWithMaxCapacity started!");
-        PlaneManager planeManager = new PlaneManager(planes);
-        PassengerPlane expectedPlaneWithMaxPassengersCapacity = planeManager.getPassengerPlaneWithMaxPassengersCapacity();
-        Assert.assertTrue(expectedPlaneWithMaxPassengersCapacity.equals(planeWithMaxPassengerCapacity));
+        PlaneManager planeManager = new PlaneManager().addAll(planes);
+        PassengerPlane expectedPlaneWithMaxPassengersCapacity = planeManager.getPlaneWithMaxPassengersCapacity();
+        Assert.assertEquals(planeWithMaxPassengerCapacity, expectedPlaneWithMaxPassengersCapacity);
     }
 
     @Test
-    public void test3() {
-        PlaneManager planeManager = new PlaneManager(planes);
-        planeManager.sortByMaxLoadCapacity();
-        List<? extends Plane> planesSortedByMaxLoadCapacity = planeManager.getPlanes();
+    public void testSortByMaxLoadCapacity() {
+        PlaneManager planeManager = new PlaneManager().addAll(planes);
+        List<? extends Plane> planesSortedByMaxLoadCapacity = planeManager.getPlanesSortedByMaxLoadCapacity();
 
-        boolean nextPlaneMaxLoadCapacityIsHigherThanCurrent = true;
         for (int i = 0; i < planesSortedByMaxLoadCapacity.size() - 1; i++) {
             Plane currentPlane = planesSortedByMaxLoadCapacity.get(i);
             Plane nextPlane = planesSortedByMaxLoadCapacity.get(i + 1);
-            if (currentPlane.getMaxLoadCapacity() > nextPlane.getMaxLoadCapacity()) {
-                nextPlaneMaxLoadCapacityIsHigherThanCurrent = false;
-                break;
-            }
+            Assert.assertFalse(currentPlane.getMaxLoadCapacity() > nextPlane.getMaxLoadCapacity());
         }
-        Assert.assertTrue(nextPlaneMaxLoadCapacityIsHigherThanCurrent);
+
     }
 
     @Test
     public void testHasAtLeastOneBomberInMilitaryPlanes() {
-        PlaneManager planeManager = new PlaneManager(planes);
-        List<MilitaryPlane> bomberMilitaryPlanes = planeManager.getBomberMilitaryPlanes();
-        boolean flag = false;
+        PlaneManager planeManager = new PlaneManager().addAll(planes);
+        List<MilitaryPlane> bomberMilitaryPlanes = planeManager.getMilitaryPlanesByType(MilitaryType.BOMBER);
         for (MilitaryPlane militaryPlane : bomberMilitaryPlanes) {
-            if ((militaryPlane.getType() == MilitaryType.BOMBER)) {
-                flag = true;
-            }
-            else {
-                Assert.fail("Test failed!");
-            }
+            Assert.assertSame(militaryPlane.getType(), MilitaryType.BOMBER);
         }
-        // if not failed
+
     }
 
     @Test
     public void testExperimentalPlanesHasClassificationLevelHigherThanUnclassified(){
-        PlaneManager planeManager = new PlaneManager(planes);
+        PlaneManager planeManager = new PlaneManager().addAll(planes);
         List<ExperimentalPlane> ExperimentalPlanes = planeManager.getExperimentalPlanes();
-        boolean hasUnclassifiedPlanes = false;
         for(ExperimentalPlane experimentalPlane : ExperimentalPlanes){
-            if(experimentalPlane.getClassificationLevel() == ClassificationLevel.UNCLASSIFIED){
-                hasUnclassifiedPlanes = true;
-                break;
-            }
+            Assert.assertNotSame(experimentalPlane.getClassificationLevel(), ClassificationLevel.UNCLASSIFIED);
         }
-        Assert.assertFalse(hasUnclassifiedPlanes);
     }
 }

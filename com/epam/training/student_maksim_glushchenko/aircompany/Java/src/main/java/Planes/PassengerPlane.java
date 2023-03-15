@@ -5,7 +5,7 @@ import java.util.Objects;
 public class PassengerPlane extends Plane{
 
     //=================FIELDS=================
-    private int passengersCapacity;
+    private final int passengersCapacity;
 
     //=================CONSTRUCTORS=================
     public PassengerPlane(PlaneEntry data, int passengersCapacity) {

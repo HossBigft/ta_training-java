@@ -38,9 +38,9 @@ public class Runner {
                 .sortByMaxDistance()
                 .toString());
         System.out.println("Passenger airport sorted by max speed: " + passengerPlaneManager
-                .sortByMaxSpeed()
+                .getPlanesSortedByMaxSpeed()
                 .toString());
 
-        System.out.println("Plane with max passenger capacity: " + passengerPlaneManager.getPlaneWithMostPassengersAboard());
+        System.out.println("Plane with max passenger capacity: " + passengerPlaneManager.getPlaneWithMaxPassengersCapacity());
     }
 }
