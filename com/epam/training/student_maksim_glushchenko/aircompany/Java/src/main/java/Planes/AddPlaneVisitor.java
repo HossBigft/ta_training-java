@@ -5,7 +5,6 @@ public class AddPlaneVisitor implements PlaneVisitor {
       public  AddPlaneVisitor(PlaneManager manager){
             this.manager=manager;
       }
-
       public void  visit(PassengerPlane plane){
             manager.add(plane);
       };

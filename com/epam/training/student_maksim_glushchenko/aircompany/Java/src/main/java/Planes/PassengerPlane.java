@@ -4,17 +4,16 @@ import java.util.Objects;
 
 public class PassengerPlane extends Plane{
 
-    //=================FIELDS=================
+
     private final int passengersCapacity;
 
-    //=================CONSTRUCTORS=================
+
     public PassengerPlane(PlaneEntry data, int passengersCapacity) {
         super(data);
         this.passengersCapacity = passengersCapacity;
     }
 
 
-    //=================METHODS=================
     public int getPassengersCapacity() {
         return passengersCapacity;
     }
