@@ -40,4 +40,9 @@ public class PassengerPlane extends Plane{
     public int hashCode() {
         return Objects.hash(super.hashCode(), passengersCapacity);
     }
+
+    @Override
+    public void accept(PlaneVisitor v){
+        v.visit(this);
+    }
 }

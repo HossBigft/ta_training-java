@@ -37,4 +37,8 @@ public class MilitaryPlane extends Plane{
     public int hashCode() {
         return Objects.hash(super.hashCode(), type);
     }
+    @Override
+    public void accept(PlaneVisitor v){
+        v.visit(this);
+    }
 }

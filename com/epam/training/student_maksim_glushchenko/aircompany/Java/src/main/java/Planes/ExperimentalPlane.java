@@ -3,7 +3,7 @@ package Planes;
 import models.ClassificationLevel;
 import models.ExperimentalTypes;
 
-public class ExperimentalPlane extends Plane{
+public class ExperimentalPlane extends Plane {
 
     private ExperimentalTypes type;
     private ClassificationLevel classificationLevel;
@@ -37,5 +37,9 @@ public class ExperimentalPlane extends Plane{
         return "experimentalPlane{" +
                 "model='" + getModel() + '\'' +
                 '}';
+    }
+
+    public void accept(PlaneVisitor v){
+         v.visit(this);
     }
 }

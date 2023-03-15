@@ -1,6 +1,6 @@
 package Planes;
 
-public class Plane {
+public abstract class Plane{
     PlaneEntry data;
 
     public Plane(PlaneEntry entry) {
@@ -45,4 +45,5 @@ public class Plane {
 
         return result;
     }
+    public abstract void accept(PlaneVisitor v);
 }

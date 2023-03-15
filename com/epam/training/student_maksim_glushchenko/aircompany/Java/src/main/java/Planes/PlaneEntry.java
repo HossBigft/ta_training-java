@@ -6,9 +6,9 @@ public class PlaneEntry {
     private final int  maxSpeed;
     private final int maxFlightDistance;
     private  final int maxLoadCapacity;
-    private PlaneEntry(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity) {
+    public PlaneEntry(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity) {
         if (model == null || model.equals("") || maxSpeed == 0 || maxFlightDistance == 0 || maxLoadCapacity == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Arguments shouldn't be zero!");
         }
         this.model = model;
         this.maxSpeed = maxSpeed;
