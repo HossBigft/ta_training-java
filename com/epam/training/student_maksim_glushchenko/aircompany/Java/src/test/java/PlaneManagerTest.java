@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class AirportTest {
+public class PlaneManagerTest {
     private final static List<Plane> planes = Arrays.asList(
             new PassengerPlane(new PlaneEntry("Boeing-737", 900, 12000, 60500), 164),
             new PassengerPlane(new PlaneEntry("Boeing-737-800", 940, 12300, 63870), 192),
