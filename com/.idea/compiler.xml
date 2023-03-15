@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="validations-epam-email" />
+        <module name="snail" />
+        <module name="average" />
+        <module name="figures" />
+        <module name="beware-of-dogs" />
+        <module name="decrementing-carousel" />
+        <module name="ArraySumOfEvenNumbers" />
+        <module name="triangle" />
+        <module name="segments" />
+        <module name="LocalMaximaRemove" />
+        <module name="meet-a-stranger" />
+        <module name="meet-an-agent" />
+        <module name="SumOfPrevious" />
+        <module name="halving-carousel" />
+        <module name="meet-autocode" />
+        <module name="contact-book" />
+        <module name="gradually-decreasing-carousel" />
+        <module name="battleship-8x8" />
+        <module name="aircompany" />
+        <module name="requirements" />
+        <module name="cycle-swap" />
+        <module name="max" />
+        <module name="decrementing-carousel-with-limit" />
+        <module name="figures-extra" />
+        <module name="meet-strangers" />
+        <module name="words" />
+        <module name="spiral" />
+        <module name="validations-color-code" />
+        <module name="go-dutch" />
+        <module name="taks-carousel" />
+        <module name="quadratic-equation" />
+        <module name="multiply-matrix-skeleton" />
+        <module name="max (1)" />
+        <module name="catch-em-all" />
+        <module name="compass" />
+        <module name="electronic-watch" />
+        <module name="Line-Intersection" />
+        <module name="arithmetic-expressions" />
+        <module name="max-in-seq-skeleton" />
+        <module name="pizza-split" />
+        <module name="sprint-planning" />
+        <module name="transpose-matrix-skeleton" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="aircompany" target="1.8" />
+      <module name="arithmetic-expressions" target="11" />
+      <module name="ArraySumOfEvenNumbers" target="11" />
+      <module name="average" target="11" />
+      <module name="battleship-8x8" target="11" />
+      <module name="beware-of-dogs" target="11" />
+      <module name="catch-em-all" target="11" />
+      <module name="compass" target="11" />
+      <module name="contact-book" target="11" />
+      <module name="cycle-swap" target="11" />
+      <module name="decrementing-carousel" target="11" />
+      <module name="decrementing-carousel-with-limit" target="11" />
+      <module name="electronic-watch" target="11" />
+      <module name="figures" target="11" />
+      <module name="figures-extra" target="11" />
+      <module name="go-dutch" target="11" />
+      <module name="gradually-decreasing-carousel" target="11" />
+      <module name="halving-carousel" target="11" />
+      <module name="Line-Intersection" target="11" />
+      <module name="LocalMaximaRemove" target="11" />
+      <module name="max" target="11" />
+      <module name="max (1)" target="11" />
+      <module name="max-in-seq-skeleton" target="11" />
+      <module name="meet-a-stranger" target="11" />
+      <module name="meet-an-agent" target="11" />
+      <module name="meet-autocode" target="11" />
+      <module name="meet-strangers" target="11" />
+      <module name="multiply-matrix-skeleton" target="11" />
+      <module name="pizza-split" target="11" />
+      <module name="quadratic-equation" target="11" />
+      <module name="requirements" target="11" />
+      <module name="segments" target="11" />
+      <module name="snail" target="11" />
+      <module name="spiral" target="11" />
+      <module name="sprint-planning" target="11" />
+      <module name="SumOfPrevious" target="11" />
+      <module name="taks-carousel" target="11" />
+      <module name="transpose-matrix-skeleton" target="11" />
+      <module name="triangle" target="11" />
+      <module name="validations-color-code" target="11" />
+      <module name="validations-epam-email" target="11" />
+      <module name="words" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

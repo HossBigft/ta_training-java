@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/max/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/snail/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/words/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/spiral/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/average/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/compass/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/figures/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/go-dutch/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/segments/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/triangle/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/aircompany/Java/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/cycle-swap/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/max-in-seq/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/pizza-split/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/catch-em-all/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/contact-book/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/optional-max/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/requirements/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/battleship8x8/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/figures-extra/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-an-agent/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-autocode/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/task-carousel/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/beware-of-dogs/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-strangers/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-a-stranger/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/sprint-planning/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/sum-of-previous/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/electronic-watch/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/halving-carousel/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/transpose-matrix/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/line-intersection/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/multiply-matrices/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/quadratic-equation/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/local-maxima-remove/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/sum-of-even-numbers/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/decrementing-carousel/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/arithmetic-expressions/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/validations-color-code/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/validations-epam-email/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/gradually-decreasing-carousel/pom.xml" />
+        <option value="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/decrementing-carousel-with-limit/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="18" project-jdk-type="JavaSDK" />
+</project>

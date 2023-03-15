@@ -2,7 +2,49 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/sum-of-even-numbers/ArraySumOfEvenNumbers.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/sum-of-even-numbers/ArraySumOfEvenNumbers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/line-intersection/Line-Intersection.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/line-intersection/Line-Intersection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/local-maxima-remove/LocalMaximaRemove.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/local-maxima-remove/LocalMaximaRemove.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/sum-of-previous/SumOfPrevious.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/sum-of-previous/SumOfPrevious.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/aircompany/Java/aircompany.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/aircompany/Java/aircompany.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/arithmetic-expressions/arithmetic-expressions.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/arithmetic-expressions/arithmetic-expressions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/average/average.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/average/average.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/battleship8x8/battleship-8x8.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/battleship8x8/battleship-8x8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/beware-of-dogs/beware-of-dogs.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/beware-of-dogs/beware-of-dogs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/catch-em-all/catch-em-all.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/catch-em-all/catch-em-all.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/com.iml" filepath="$PROJECT_DIR$/.idea/com.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/compass/compass.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/compass/compass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/contact-book/contact-book.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/contact-book/contact-book.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/cycle-swap/cycle-swap.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/cycle-swap/cycle-swap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/decrementing-carousel/decrementing-carousel.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/decrementing-carousel/decrementing-carousel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/decrementing-carousel-with-limit/decrementing-carousel-with-limit.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/decrementing-carousel-with-limit/decrementing-carousel-with-limit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/electronic-watch/electronic-watch.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/electronic-watch/electronic-watch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/figures/figures.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/figures/figures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/figures-extra/figures-extra.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/figures-extra/figures-extra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/go-dutch/go-dutch.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/go-dutch/go-dutch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/gradually-decreasing-carousel/gradually-decreasing-carousel.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/gradually-decreasing-carousel/gradually-decreasing-carousel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/halving-carousel/halving-carousel.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/halving-carousel/halving-carousel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/max/max.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/max/max.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/optional-max/max (1).iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/optional-max/max (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/max-in-seq/max-in-seq-skeleton.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/max-in-seq/max-in-seq-skeleton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-a-stranger/meet-a-stranger.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-a-stranger/meet-a-stranger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-an-agent/meet-an-agent.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-an-agent/meet-an-agent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-autocode/meet-autocode.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-autocode/meet-autocode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-strangers/meet-strangers.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/meet-strangers/meet-strangers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/multiply-matrices/multiply-matrix-skeleton.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/multiply-matrices/multiply-matrix-skeleton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/pizza-split/pizza-split.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/pizza-split/pizza-split.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/quadratic-equation/quadratic-equation.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/quadratic-equation/quadratic-equation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/requirements/requirements.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/requirements/requirements.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/segments/segments.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/segments/segments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/snail/snail.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/snail/snail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/spiral/spiral.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/spiral/spiral.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/sprint-planning/sprint-planning.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/sprint-planning/sprint-planning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/task-carousel/taks-carousel.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/task-carousel/taks-carousel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/transpose-matrix/transpose-matrix-skeleton.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/transpose-matrix/transpose-matrix-skeleton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/triangle/triangle.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/triangle/triangle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/validations-color-code/validations-color-code.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/validations-color-code/validations-color-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/validations-epam-email/validations-epam-email.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/validations-epam-email/validations-epam-email.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epam/training/student_maksim_glushchenko/words/words.iml" filepath="$PROJECT_DIR$/epam/training/student_maksim_glushchenko/words/words.iml" />
     </modules>
   </component>
 </project>
