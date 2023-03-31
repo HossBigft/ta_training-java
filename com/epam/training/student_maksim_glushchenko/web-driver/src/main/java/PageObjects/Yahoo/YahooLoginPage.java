@@ -1,0 +1,47 @@
+package PageObjects.Yahoo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+
+import java.time.Duration;
+
+public class YahooLoginPage {
+    private final WebDriver driver;
+    public static final String loginUrl="https://mail.tutanota.com/login/";
+    private final String usernameBy= "#login-username";
+    private final String passwordBy = "#login-passwd";
+    private final String loginButton = "#login-signin";
+
+    public YahooLoginPage(WebDriver driver) {
+        this.driver = driver;
+        if (!driver.getCurrentUrl().equals(loginUrl)) {
+            throw new IllegalStateException("This is not Yahoo sign in page," +
+                    " current page is: " + driver.getCurrentUrl());
+        }
+    }
+
+    public YahooHomePage loginAsUser(String username, String password){
+        FluentWait<WebDriver> wait=new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(3))
+                .pollingEvery(Duration.ofMillis(500));
+
+        WebElement loginField=driver.findElement(By.cssSelector(usernameBy));
+        loginField.sendKeys(username);
+
+        WebElement loginButton=driver.findElement(By.cssSelector(this.loginButton));
+        loginButton.click();
+
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(passwordBy)));
+            WebElement passField = driver.findElement(By.cssSelector(passwordBy));
+            passField.sendKeys(password);
+        } catch (Exception e){
+            System.out.println("Sign in failed");
+        }
+        loginButton.click();
+        return new YahooHomePage(driver);
+    }
+}
