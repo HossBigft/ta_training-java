@@ -10,14 +10,14 @@ import java.time.Duration;
 
 public class YahooLoginPage {
     private final WebDriver driver;
-    public static final String loginUrl="https://mail.tutanota.com/login/";
+    public static final String url ="https://login.yahoo.com/";
     private final String usernameBy= "#login-username";
     private final String passwordBy = "#login-passwd";
     private final String loginButton = "#login-signin";
 
     public YahooLoginPage(WebDriver driver) {
         this.driver = driver;
-        if (!driver.getCurrentUrl().equals(loginUrl)) {
+        if (!driver.getCurrentUrl().equals(url)) {
             throw new IllegalStateException("This is not Yahoo sign in page," +
                     " current page is: " + driver.getCurrentUrl());
         }
@@ -25,7 +25,7 @@ public class YahooLoginPage {
 
     public YahooHomePage loginAsUser(String username, String password){
         FluentWait<WebDriver> wait=new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(3))
+                .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofMillis(500));
 
         WebElement loginField=driver.findElement(By.cssSelector(usernameBy));
@@ -40,7 +40,9 @@ public class YahooLoginPage {
             passField.sendKeys(password);
         } catch (Exception e){
             System.out.println("Sign in failed");
+            return  null;
         }
+        loginButton=driver.findElement(By.cssSelector(this.loginButton));
         loginButton.click();
         return new YahooHomePage(driver);
     }

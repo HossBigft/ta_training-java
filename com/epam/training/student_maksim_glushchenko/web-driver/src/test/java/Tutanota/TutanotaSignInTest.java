@@ -6,15 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-public class TutanotaLoginPageTest {
+public class TutanotaSignInTest {
 
     private WebDriver driver;
-    private final String loginUrl = TutanotaLoginPage.loginUrl;
-    @BeforeTest
+    private final String loginUrl = TutanotaLoginPage.url;
+    @BeforeMethod
     void setup() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         ChromeOptions options = new ChromeOptions();
@@ -22,7 +20,7 @@ public class TutanotaLoginPageTest {
         driver = new ChromeDriver(options);
         driver.get(loginUrl);
     }
-    @AfterTest
+    @AfterMethod
     void closeWebDriver(){
         driver.quit();
     }
@@ -47,6 +45,7 @@ public class TutanotaLoginPageTest {
         String login= System.getenv("tutanota_login");
         String password= System.getenv("tutanota_pass");
         TutanotaEmailPage homePage=loginPage.loginAsUser(login,password);
-        Assert.assertEquals(homePage.getEmailPageTitle(), driver.getTitle());
+        Assert.assertEquals(homePage.getPageTitle(), driver.getTitle());
+
     }
 }

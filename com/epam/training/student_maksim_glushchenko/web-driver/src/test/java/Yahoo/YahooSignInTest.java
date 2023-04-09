@@ -7,23 +7,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 
-public class YahooLoginPageTest {
+public class YahooSignInTest {
     private WebDriver driver;
-    private final String loginUrl = YahooLoginPage.loginUrl;
-    @BeforeTest
+    private final String loginUrl = YahooLoginPage.url;
+    @BeforeMethod
      void setup() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
-        driver = new ChromeDriver(options);
+//        options.addArguments("headless");
+        driver = new ChromeDriver();
         driver.get(loginUrl);
     }
-    @AfterTest
+    @AfterMethod
      void closeWebDriver(){
         driver.quit();
     }
@@ -45,8 +43,10 @@ public class YahooLoginPageTest {
     @Test
     public void testValidCredentials() {
         YahooLoginPage loginPage =  new YahooLoginPage(driver);
-        YahooHomePage homePage=loginPage.loginAsUser(System.getenv("yahoo_login"),System.getenv("yahoo_pass"));
-        Assert.assertNotEquals(homePage.getHomePageTitle(), driver.getTitle());
+        String login=System.getenv("yahoo_login");
+        String password=System.getenv("yahoo_pass");
+        YahooHomePage homePage=loginPage.loginAsUser(login,password);
+        Assert.assertNotEquals(homePage.getTitle(), driver.getTitle());
     }
 
 }
