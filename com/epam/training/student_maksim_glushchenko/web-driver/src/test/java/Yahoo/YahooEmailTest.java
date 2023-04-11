@@ -19,7 +19,7 @@ public class YahooEmailTest {
     void setup() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--headless=new");
+        options.addArguments("--headless=new");
         options.addArguments("--profile-directory=Profile 1");
         options.addArguments("--user-data-dir="+System.getenv("chromeProfilePath"));
         driver = new ChromeDriver(options);
