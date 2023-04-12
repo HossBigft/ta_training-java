@@ -16,9 +16,9 @@ public class TutanotaSignInTest {
     void setup() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
+        options.addArguments("--headless=new");
+        options.addArguments(" --start-maximized");
         driver = new ChromeDriver(options);
-        driver.get(loginUrl);
     }
     @AfterMethod
     void closeWebDriver(){
@@ -46,6 +46,5 @@ public class TutanotaSignInTest {
         String password= System.getenv("tutanota_pass");
         TutanotaEmailPage homePage=loginPage.loginAsUser(login,password);
         Assert.assertEquals(homePage.getPageTitle(), driver.getTitle());
-
     }
 }

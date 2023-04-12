@@ -20,7 +20,8 @@ public class YahooEmailTest {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless=new");
-        options.addArguments("--profile-directory=Profile 1");
+        options.addArguments(" --start-maximized");
+        options.addArguments("--profile-directory=Profile 2");
         options.addArguments("--user-data-dir="+System.getenv("chromeProfilePath"));
         driver = new ChromeDriver(options);
     }
@@ -28,21 +29,29 @@ public class YahooEmailTest {
     void closeWebDriver(){
         driver.quit();
     }
+    @AfterTest
+    void clearEmails(){
+        setup();
+        YahooEmailPage yahPage =  new YahooEmailPage(driver);
+        yahPage.clearSentFolder();
+        TutanotaEmailPage tutaEmailPage =  new TutanotaEmailPage(driver);
+        tutaEmailPage.clearInbox();
+        driver.quit();
+    }
 
 
-    @Test
+    @Test(priority = 0)
     public void testSendEmail(){
         YahooEmailPage emailPage =  new YahooEmailPage(driver);
         emailPage.sendEmail(tutaAdress, mailSubject, mailContent);
         Assert.assertTrue( emailPage.isMailSent(tutaAdress, mailSubject, mailContent));
-        emailPage.clearSentFolder();
-    }
-    @Test
-    public void testCorrectContentOfSentMail() {
 
+    }
+    @Test(priority = 1)
+    public void testEmailReceivedAndUnread() {
         TutanotaEmailPage tutaEmailPage =  new TutanotaEmailPage(driver);
-        Assert.assertTrue( tutaEmailPage.isEmailReceivedAndUnread(yahAdress, mailSubject, mailContent));
-        tutaEmailPage.clearInbox();
+        Assert.assertTrue(tutaEmailPage.isEmailReceivedAndUnread(yahAdress, mailSubject, mailContent));
+
     }
 
 

@@ -19,10 +19,16 @@ public class TutanotaLoginPage {
 
     public TutanotaLoginPage(WebDriver driver) {
         this.driver = driver;
-        if (!driver.getCurrentUrl().equals(url)) {
-            throw new IllegalStateException("This is not Tutanota sign in page," +
-                    " current page is: " + driver.getCurrentUrl());
+        if (!driver.getCurrentUrl().contains(url)) {
+            driver.get(url);
         }
+
+        FluentWait wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofMillis(500));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(loginButton)));
+
     }
 
     public TutanotaEmailPage loginAsUser(String username, String password){

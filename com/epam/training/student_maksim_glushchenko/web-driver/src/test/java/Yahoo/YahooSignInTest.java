@@ -16,8 +16,6 @@ public class YahooSignInTest {
     @BeforeMethod
      void setup() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
-        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("headless");
         driver = new ChromeDriver();
         driver.get(loginUrl);
     }
@@ -45,8 +43,8 @@ public class YahooSignInTest {
         YahooLoginPage loginPage =  new YahooLoginPage(driver);
         String login=System.getenv("yahoo_login");
         String password=System.getenv("yahoo_pass");
-        YahooHomePage homePage=loginPage.loginAsUser(login,password);
-        Assert.assertNotEquals(homePage.getTitle(), driver.getTitle());
+        YahooHomePage homePage=loginPage.loginAsUser(login,password,20);
+        Assert.assertEquals(homePage.getTitle(), driver.getTitle());
     }
 
 }

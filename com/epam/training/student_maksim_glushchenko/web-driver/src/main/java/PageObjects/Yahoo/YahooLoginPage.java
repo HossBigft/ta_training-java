@@ -24,8 +24,11 @@ public class YahooLoginPage {
     }
 
     public YahooHomePage loginAsUser(String username, String password){
+        return loginAsUser(username,password,3);
+    }
+    public YahooHomePage loginAsUser(String username, String password, int waitTime){
         FluentWait<WebDriver> wait=new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(20))
+                .withTimeout(Duration.ofSeconds(waitTime))
                 .pollingEvery(Duration.ofMillis(500));
 
         WebElement loginField=driver.findElement(By.cssSelector(usernameBy));

@@ -12,31 +12,30 @@ public class TutanotaEmailPage {
 
     public static final String url = "https://mail.tutanota.com/mail/";
     public static final String adress = System.getenv("tutanota_login");
-    private final String pageTitle =System.getenv("tutanota_login")+" - Tutanota";
-    private final String createButton ="[title='New email']";
-    private final String sendButton="[title='Send']";
-    private final String destinationAdressField ="input[aria-label='To']";
-    private final String subjectField="input[aria-label='Subject']";
-    private final String contentField= "[role='textbox']";
+    private final String pageTitle = System.getenv("tutanota_login") + " - Tutanota";
+    private final String createButton = "[title='New email']";
+    private final String sendButton = "[title='Send']";
+    private final String destinationAdressField = "input[aria-label='To']";
+    private final String subjectField = "input[aria-label='Subject']";
+    private final String contentField = "[role='textbox']";
 
-    private final String inboxFolderButton ="[title='Inbox']";
-    private final String sentFolderButton ="[title='Sent']";
-    private final String makeEmailNonConfidentialButton ="[title='Confidential']";
-    private final String emailSentNotification ="#dialog-title";
+    private final String inboxFolderButton = "[title='Inbox']";
+    private final String sentFolderButton = "[title='Sent']";
+    private final String makeEmailNonConfidentialButton = "[title='Confidential']";
+    private final String emailSentNotification = "#dialog-title";
     private final String mailItem = "[style*='display: list-item']";
-    private final String mailItemUnread ="[class='dot bg-accent-fg']";
-    private final String deleteButton ="[title='Delete']";
-    private final  String sentSubject = "[class*='subject']";
-    private final  String sentFromAdress =".flex.click.small.ml-between-s.items-center>.text-ellipsis";
-    private  final String sentContent = "#mail-body";
+    private final String mailItemUnread = "[class='dot bg-accent-fg']";
+    private final String deleteButton = "[title='Delete']";
+    private final String sentSubject = "[class*='subject']";
+    private final String sentToAdress = ".flex.click.small.ml-between-s.items-center>.text-ellipsis";
+    private final String sentFromAdress = ".small.flex.flex-wrap.items-start>.text-break";
+    private final String sentContent = "[id='mail-body']";
 
     public TutanotaEmailPage(WebDriver driver) {
         this.driver = driver;
-        FluentWait wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(5))
-                .pollingEvery(Duration.ofMillis(500));
-        driver.get(url);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(inboxFolderButton)));
+        if(!driver.getCurrentUrl().contains("mail.tutanota.com/mail")){
+            driver.get(url);
+        }
 
     }
 
@@ -44,7 +43,7 @@ public class TutanotaEmailPage {
         return pageTitle;
     }
 
-    public void sendEmail(String destinationEmail, String subject, String content){
+    public void sendEmail(String destinationEmail, String subject, String content) {
         FluentWait wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(500))
                 .pollingEvery(Duration.ofMillis(500));
@@ -55,7 +54,7 @@ public class TutanotaEmailPage {
 
 
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(destinationAdressField)));
-        WebElement destination= driver.findElement(By.cssSelector(destinationAdressField));
+        WebElement destination = driver.findElement(By.cssSelector(destinationAdressField));
         destination.sendKeys(destinationEmail);
         removeAutofillEmails(destinationEmail);
 
@@ -63,10 +62,10 @@ public class TutanotaEmailPage {
         WebElement makeNonConfidentialButton = driver.findElement(By.cssSelector(makeEmailNonConfidentialButton));
         makeNonConfidentialButton.click();
 
-        WebElement mailSubject= driver.findElement(By.cssSelector(subjectField));
+        WebElement mailSubject = driver.findElement(By.cssSelector(subjectField));
         mailSubject.sendKeys(subject);
 
-        WebElement mailContent= driver.findElement(By.cssSelector(contentField));
+        WebElement mailContent = driver.findElement(By.cssSelector(contentField));
         mailContent.sendKeys(content);
 
         WebElement send = driver.findElement(By.cssSelector(sendButton));
@@ -75,7 +74,8 @@ public class TutanotaEmailPage {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(emailSentNotification)));
 
     }
-    private void removeAutofillEmails(String email){
+
+    private void removeAutofillEmails(String email) {
         FluentWait wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(3))
                 .pollingEvery(Duration.ofMillis(500));
@@ -92,79 +92,75 @@ public class TutanotaEmailPage {
                 removeAdress.click();
 
             }
-        } catch (TimeoutException e){
+        } catch (TimeoutException e) {
             System.out.println("There are no autofill email pieces");
         }
 
     }
 
-    public boolean isMailSent(String toEmail, String subject, String content){
+    public boolean isMailSent(String toEmail, String subject, String content) {
         FluentWait wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(500));
 
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(sentFolderButton)));
-        WebElement sentFolder= driver.findElement(By.cssSelector(sentFolderButton));
+        WebElement sentFolder = driver.findElement(By.cssSelector(sentFolderButton));
         sentFolder.click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(mailItem)));
         List<WebElement> sentMails = driver.findElements(By.cssSelector(mailItem));
-        for(WebElement mail : sentMails){
+        for (WebElement mail : sentMails) {
             mail.click();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(sentFromAdress)));
-            WebElement destinationAdress= driver.findElement(By.cssSelector(sentFromAdress));
-            WebElement mailSubject= driver.findElement(By.cssSelector(sentSubject));
-            WebElement mailContent= driver.findElement(By.cssSelector(sentContent));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(sentToAdress)));
+            WebElement destinationAdress = driver.findElement(By.cssSelector(sentToAdress));
+            WebElement mailSubject = driver.findElement(By.cssSelector(sentSubject));
 
-            if(toEmail.equals(destinationAdress.getText())
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(sentContent)));
+            WebElement mailContent = driver.findElement(By.cssSelector(sentContent));
+
+            if (toEmail.equals(destinationAdress.getText())
                     && subject.equals(mailSubject.getText())
                     && content.equals(mailContent.getText())
-            ){
+            ) {
                 return true;
             }
         }
         return false;
     }
-    public void clearInbox(){
-        FluentWait wait = new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofMillis(500));
-        WebElement inbox = driver.findElement(By.cssSelector(inboxFolderButton));
-        inbox.click();
-        while (!driver.findElements(By.cssSelector(mailItem)).isEmpty()) {
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(mailItem)));
-            WebElement mail = driver.findElement(By.cssSelector(mailItem));
-            mail.click();
 
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(deleteButton)));
-            WebElement delete = driver.findElement(By.cssSelector(deleteButton));
-            delete.click();
-
-            wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.cssSelector(mailItem), driver.findElements(By.cssSelector(mailItem)).size()));
-        }
+    public void clearInbox() {
+        clearFolder(inboxFolderButton);
     }
-    public void clearSentFolder(){
+
+    public void clearSentFolder() {
         clearFolder(sentFolderButton);
     }
-    private void clearFolder(String folderSelector){
+
+    private void clearFolder(String folderButtonSelector) {
         FluentWait wait = new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(10))
+                .withTimeout(Duration.ofSeconds(3))
                 .pollingEvery(Duration.ofMillis(500));
-        WebElement inbox = driver.findElement(By.cssSelector(folderSelector));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(folderButtonSelector)));
+        WebElement inbox = driver.findElement(By.cssSelector(folderButtonSelector));
         inbox.click();
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(mailItem)));
+        } catch (TimeoutException e) {
+            System.out.println("Folder are empty");
+        }
         while (!driver.findElements(By.cssSelector(mailItem)).isEmpty()) {
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(mailItem)));
             WebElement mail = driver.findElement(By.cssSelector(mailItem));
             mail.click();
-
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(deleteButton)));
             WebElement delete = driver.findElement(By.cssSelector(deleteButton));
             delete.click();
-
             wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.cssSelector(mailItem), driver.findElements(By.cssSelector(mailItem)).size()));
         }
+
     }
-    public boolean isEmailReceivedAndUnread(String fromEmail, String subject, String content){
+
+    public boolean isEmailReceivedAndUnread(String fromEmail, String subject, String content) {
         FluentWait wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(500));
@@ -174,7 +170,7 @@ public class TutanotaEmailPage {
 
         try {
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(mailItemUnread)));
-        } catch (TimeoutException e){
+        } catch (TimeoutException e) {
             System.out.println("There are no unread emails");
             return false;
         }
@@ -183,21 +179,21 @@ public class TutanotaEmailPage {
         mail.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(sentFromAdress)));
-        WebElement fromField= driver.findElement(By.cssSelector(sentFromAdress));
-        String currFromEmail = fromField.getText().strip();
+        WebElement fromField = driver.findElement(By.cssSelector(sentFromAdress));
+        String currFromEmail = fromField.getText();
 
-        WebElement subjectField= driver.findElement(By.cssSelector(sentSubject));
-        String currSubject = subjectField.getText().strip();
+        WebElement subjectField = driver.findElement(By.cssSelector(sentSubject));
+        String currSubject = subjectField.getText();
 
-        WebElement contentField= driver.findElement(By.cssSelector(sentContent));
-        String currContent = contentField.getText().strip();
+        WebElement contentField = driver.findElement(By.cssSelector(sentContent));
+        String currContent = contentField.getText();
 
-        if(currFromEmail.equals(fromEmail) && currSubject.equals(subject) && currContent.equals(content)){
-            return  true;
-        } else{
-            System.out.println("Data is not matching\n"+"Given adress: \""+fromEmail +"\"\nActual adress: \""+currFromEmail  +"\""+currFromEmail.equals(fromEmail)+"\n"
-            +"Given subject: " +subject+"\nActual subject: "+currSubject+" "+currSubject.equals(subject)+"\n"
-            +"Given content: "+content+"\nActual content: "+currContent +" "+ currContent.equals(content));
+        if (currFromEmail.equals(fromEmail) && currSubject.equals(subject) && currContent.equals(content)) {
+            return true;
+        } else {
+            System.out.println("Data is not matching\n" + "Given adress: \"" + fromEmail + "\"\nActual adress: \"" + currFromEmail + "\"" + currFromEmail.equals(fromEmail) + "\n"
+                    + "Given subject: " + subject + "\nActual subject: " + currSubject + " " + currSubject.equals(subject) + "\n"
+                    + "Given content: " + content + "\nActual content: " + currContent + " " + currContent.equals(content));
             return false;
         }
     }
