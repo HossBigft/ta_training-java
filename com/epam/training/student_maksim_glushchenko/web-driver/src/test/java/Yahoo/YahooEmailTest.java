@@ -19,17 +19,17 @@ public class YahooEmailTest {
     void setup() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
+/*        options.addArguments("--headless=new");*/
         options.addArguments(" --start-maximized");
         options.addArguments("--profile-directory=Profile 2");
         options.addArguments("--user-data-dir="+System.getenv("chromeProfilePath"));
         driver = new ChromeDriver(options);
     }
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     void closeWebDriver(){
         driver.quit();
     }
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     void clearEmails(){
         setup();
         YahooEmailPage yahPage =  new YahooEmailPage(driver);

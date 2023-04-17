@@ -18,7 +18,6 @@ public class TutanotaEmailPage {
     private final String destinationAdressField = "input[aria-label='To']";
     private final String subjectField = "input[aria-label='Subject']";
     private final String contentField = "[role='textbox']";
-
     private final String inboxFolderButton = "[title='Inbox']";
     private final String sentFolderButton = "[title='Sent']";
     private final String makeEmailNonConfidentialButton = "[title='Confidential']";
@@ -191,7 +190,7 @@ public class TutanotaEmailPage {
         if (currFromEmail.equals(fromEmail) && currSubject.equals(subject) && currContent.equals(content)) {
             return true;
         } else {
-            System.out.println("Data is not matching\n" + "Given adress: \"" + fromEmail + "\"\nActual adress: \"" + currFromEmail + "\"" + currFromEmail.equals(fromEmail) + "\n"
+            System.out.println("Data is not matching\n" + "Given adress: \"" + fromEmail + "\"\nActual adress: \"" + currFromEmail + "\" " + currFromEmail.equals(fromEmail) + "\n"
                     + "Given subject: " + subject + "\nActual subject: " + currSubject + " " + currSubject.equals(subject) + "\n"
                     + "Given content: " + content + "\nActual content: " + currContent + " " + currContent.equals(content));
             return false;
