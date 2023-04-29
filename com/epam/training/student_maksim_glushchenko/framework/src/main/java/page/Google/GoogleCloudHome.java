@@ -13,36 +13,36 @@ import java.util.Optional;
 
 public class GoogleCloudHome {
     private FluentWait<WebDriver> wait;
-    ;
     private WebDriver driver;
     private final String URL = "https://cloud.google.com";
-    private final By searchFieldBy = By.cssSelector(".devsite-searchbox") ;
+    private final By searchButtonBy = By.cssSelector(".devsite-searchbox") ;
+    private final By searchFieldBy = By.cssSelector("[placeholder='Search']") ;
     private  final By submitButtonBy = By.cssSelector("[type='submit']");
     private final By resultItemBy = By.cssSelector(".gsc-webResult .gsc-result");
     private final By resultItemTitleBy = By.cssSelector(".gs-title");
 
 
 
-    public GoogleCloudHome GoogleCloudHome(WebDriver driver){
+    public GoogleCloudHome(WebDriver driver){
         this.driver=driver;
         wait=new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofMillis(500));
-        return this;
     }
     public GoogleCloudHome openPage(){
         driver.get(URL);
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(searchFieldBy));
+            wait.until(ExpectedConditions.elementToBeClickable(searchButtonBy));
         } catch (TimeoutException e){
             System.out.println("Page didn't load");
         }
         return this;
     }
     public GoogleCloudHome search(String query){
-        WebElement searchField = wait.until(ExpectedConditions.elementToBeClickable(searchFieldBy));
-        searchField.click();
-        wait.until(ExpectedConditions.elementToBeClickable(searchFieldBy)).sendKeys(query);
+        WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(searchButtonBy));
+        searchButton.click();
+        WebElement searchField= wait.until(ExpectedConditions.elementToBeClickable(searchFieldBy));
+        searchField.sendKeys(query);
 
         WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(submitButtonBy));
         submitButton.click();

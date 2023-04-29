@@ -1,9 +1,6 @@
 package page.TempMail;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 
@@ -11,7 +8,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import java.time.Duration;
 import java.util.Optional;
 
-public class Yopmail {
+public class YopMail {
 
     private FluentWait<WebDriver> wait;
     private WebDriver driver;
@@ -21,49 +18,50 @@ public class Yopmail {
     private final By refreshInboxButtonBy =By.cssSelector("#refresh");
     private final By emailItemBy = By.cssSelector(".lm");
     private final By emailContentEstimateCellBy = By.cssSelector("tbody tr td:nth-child(4)");
-    private final By emailContentBy =By.cssSelector("#mail");
-    public Yopmail(WebDriver driver){
+    private final String emailContentIframeID = "#ifmail";
+    private final String emailItemIframeID = "#ifinbox";
+    private final By captchaPopupBy =By.cssSelector("#r_parent");
+    public YopMail(WebDriver driver){
         this.driver=driver;
         wait=new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofMillis(500));
     }
-    public Yopmail openPage(){
+    public YopMail openPage(){
         driver.get(URL);
-        wait.until(ExpectedConditions.elementToBeClickable(emailFieldBy));
+        wait.until(ExpectedConditions.elementToBeClickable(inboxButtonBy));
         return this;
     }
-    public Yopmail openInbox(){
+    public YopMail openInbox(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(inboxButtonBy)).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(captchaPopupBy));
         wait.until(ExpectedConditions.elementToBeClickable(emailFieldBy));
         return this;
     }
     public String getAdress(){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(emailFieldBy)).getText();
     }
-    private Optional<WebElement> waitForEmailToArriveAndOpen(int mins){
+    private Optional<String> waitForEmailToArriveAndGetText(int mins){
         WebElement refreshButton = wait.until(ExpectedConditions.elementToBeClickable(refreshInboxButtonBy));
+        refreshButton.click();
         int waitAmount=(mins*60)/30;
         for(int i=0; i<waitAmount; i++){
             try {
-                wait.until(ExpectedConditions.elementToBeClickable(emailItemBy)).click();
-                return Optional.of(wait.until(ExpectedConditions.elementToBeClickable(emailContentEstimateCellBy)));
+                wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector(emailContentIframeID)));
+                WebElement estimateCell = wait.until(ExpectedConditions.elementToBeClickable(emailContentEstimateCellBy));
+                return Optional.of(estimateCell.getText());
             } catch (TimeoutException e){
                 System.out.println("Email not found");
             }
+            driver.switchTo().defaultContent();
             refreshButton.click();
         }
         return Optional.empty();
     }
-    public Optional<String> getEstimateFromMail(){
-        String estimate;
-        if(waitForEmailToArriveAndOpen(10).isPresent()) {
-            WebElement email = waitForEmailToArriveAndOpen(10).get();
-            estimate=email.getText();
-            return Optional.of(estimate.substring(estimate.length()-4,estimate.length()));
-        }else {
-            return Optional.empty();
-        }
+    public String getEstimateFromMail(){
+        String estimate = waitForEmailToArriveAndGetText(10).get();
+        return estimate.substring(4,estimate.length());
+
 
     }
 

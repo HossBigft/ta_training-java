@@ -3,13 +3,16 @@ package driver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverSingleton {
     private static WebDriver driver;
+
     private DriverSingleton(){}
 
     public static WebDriver getDriver(){
+
         if(driver==null){
             switch (System.getProperty("browser")){
                 case "firefox":
@@ -17,6 +20,10 @@ public class DriverSingleton {
                     driver= new FirefoxDriver();
                     break;
                 default:
+                    System.setProperty("webdriver.http.factory", "jdk-http-client");
+                    ChromeOptions options = new ChromeOptions();
+                    /*options.addArguments("--headless=new");*/
+                    options.addArguments("--start-maximized");
                     WebDriverManager.chromedriver().setup();
                     driver= new ChromeDriver();
                     break;
