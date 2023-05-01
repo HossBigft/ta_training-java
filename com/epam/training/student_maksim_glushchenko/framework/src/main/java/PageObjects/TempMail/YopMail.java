@@ -1,5 +1,7 @@
-package page.TempMail;
+package PageObjects.TempMail;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -12,6 +14,7 @@ public class YopMail {
 
     private FluentWait<WebDriver> wait;
     private WebDriver driver;
+    private Logger log = LogManager.getRootLogger();
     private final String URL = "https://yopmail.com/email-generator";
     private final By emailFieldBy =By.cssSelector(".bname");
     private final By inboxButtonBy =By.cssSelector("[onclick='egengo();']");
@@ -29,7 +32,12 @@ public class YopMail {
     }
     public YopMail openPage(){
         driver.get(URL);
+        try{
         wait.until(ExpectedConditions.elementToBeClickable(inboxButtonBy));
+        } catch (
+        TimeoutException e){
+            log.error("Failed to load yopmail: " + e.getLocalizedMessage());
+        }
         return this;
     }
     public YopMail openInbox(){

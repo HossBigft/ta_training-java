@@ -1,6 +1,9 @@
-package page.Google;
+package PageObjects.Google;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,6 +14,7 @@ import java.time.Duration;
 public class GoogleCloudCalculator {
     private FluentWait<WebDriver> wait;
     private WebDriver driver;
+    private Logger log = LogManager.getRootLogger();
 
     private final String URL = "https://cloud.google.com/products/calculator";
     private final By calculatorOuterFrameBy = By.cssSelector("#cloud-site > devsite-iframe:nth-child(1) > iframe:nth-child(1)");
@@ -54,8 +58,14 @@ public class GoogleCloudCalculator {
     }
     public GoogleCloudCalculator openPage(){
         driver.get(URL);
+        try{
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(calculatorOuterFrameBy));
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(calculatorInnerFrameBy));
+        } catch (
+        TimeoutException e){
+            log.error("Failed to load Google Cloud calculator: " + e.getLocalizedMessage());
+        }
+
         return this;
     }
     public GoogleCloudCalculator selectComputerEngine(){
@@ -107,6 +117,7 @@ public class GoogleCloudCalculator {
     }
     public GoogleCloudCalculator addToEstimate(){
         wait.until(ExpectedConditions.elementToBeClickable(addToEstimateButtonBy)).click();
+        log.info("Google Cloud estimate created");
         return this;
     }
 
@@ -118,6 +129,7 @@ public class GoogleCloudCalculator {
         emailField.sendKeys(adress);
         wait.until(ExpectedConditions.elementToBeClickable(sendEmailButtonBy)).click();
         wait.until(ExpectedConditions.invisibilityOf(emailField));
+        log.info("Estimate sent to email");
     }
     public String getEstimateValue(){
         String estimate = wait.until(ExpectedConditions.visibilityOfElementLocated(estimateValueBy)).getText();

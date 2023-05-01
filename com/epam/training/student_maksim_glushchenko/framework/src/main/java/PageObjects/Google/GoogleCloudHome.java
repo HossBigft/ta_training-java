@@ -1,5 +1,7 @@
-package page.Google;
+package PageObjects.Google;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +16,7 @@ import java.util.Optional;
 public class GoogleCloudHome {
     private FluentWait<WebDriver> wait;
     private WebDriver driver;
+    private Logger log = LogManager.getRootLogger();
     private final String URL = "https://cloud.google.com";
     private final By searchButtonBy = By.cssSelector(".devsite-searchbox") ;
     private final By searchFieldBy = By.cssSelector("[placeholder='Search']") ;
@@ -34,7 +37,7 @@ public class GoogleCloudHome {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(searchButtonBy));
         } catch (TimeoutException e){
-            System.out.println("Page didn't load");
+            log.error("Failed to load Google Cloud homepage: " + e.getLocalizedMessage());
         }
         return this;
     }
@@ -49,7 +52,7 @@ public class GoogleCloudHome {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(resultItemBy));
         } catch (TimeoutException e) {
-            System.out.println("No pages was found");
+            log.error("Nothing was found: " + e.getLocalizedMessage());
         }
         return this;
     }
@@ -61,7 +64,7 @@ public class GoogleCloudHome {
                 return Optional.of(new GoogleCloudCalculator(driver));
             }
         }
-        System.out.println("Item with title "+title+"\" not found"  );
+        log.info("Item with title "+title+"\" not found"  );
         return Optional.empty();
     }
 

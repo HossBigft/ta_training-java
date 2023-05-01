@@ -1,16 +1,18 @@
-import driver.DriverSingleton;
+import DriverSingleton.DriverSingleton;
+import Utils.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WindowType;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import page.Google.GoogleCloudCalculator;
-import page.Google.GoogleCloudHome;
-import page.TempMail.YopMail;
+import PageObjects.Google.GoogleCloudCalculator;
+import PageObjects.Google.GoogleCloudHome;
+import PageObjects.TempMail.YopMail;
 
 import java.util.Optional;
-
+@Listeners(TestListener.class)
 public class GoogleCloudCalculatorTest {
     private WebDriver driver;
     private final String CALCULATOR_TITLE = "Google Cloud Platform Pricing Calculator";
