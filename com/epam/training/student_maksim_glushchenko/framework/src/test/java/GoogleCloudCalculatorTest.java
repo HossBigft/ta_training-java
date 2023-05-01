@@ -1,4 +1,5 @@
 import DriverSingleton.DriverSingleton;
+import Service.TestDataReader;
 import Utils.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WindowType;
@@ -43,7 +44,7 @@ public class GoogleCloudCalculatorTest {
         String estimate = new GoogleCloudCalculator(driver)
                 .openPage()
                 .selectComputerEngine()
-                .withNumberOfInstances(4)
+                .withNumberOfInstances(TestDataReader.getTestData("dev"))
                 .withFreeOrBYOLOperatingSystem()
                 .withRegularVM()
                 .withSeries1n()
