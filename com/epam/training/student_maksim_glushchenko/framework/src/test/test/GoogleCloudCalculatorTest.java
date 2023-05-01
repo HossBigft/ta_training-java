@@ -44,7 +44,7 @@ public class GoogleCloudCalculatorTest {
         String estimate = new GoogleCloudCalculator(driver)
                 .openPage()
                 .selectComputerEngine()
-                .withNumberOfInstances(TestDataReader.getTestData("dev"))
+                .withNumberOfInstances(TestDataReader.getTestData("test.data.numberOfInstances"))
                 .withFreeOrBYOLOperatingSystem()
                 .withRegularVM()
                 .withSeries1n()
