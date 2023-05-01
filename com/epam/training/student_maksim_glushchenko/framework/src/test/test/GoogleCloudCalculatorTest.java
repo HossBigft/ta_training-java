@@ -62,7 +62,7 @@ public class GoogleCloudCalculatorTest {
         GoogleCloudCalculator calculator= new GoogleCloudCalculator(driver)
                 .openPage()
                 .selectComputerEngine()
-                .withNumberOfInstances(4)
+                .withNumberOfInstances(TestDataReader.getTestData("test.data.numberOfInstances"))
                 .withFreeOrBYOLOperatingSystem()
                 .withRegularVM()
                 .withSeries1n()
