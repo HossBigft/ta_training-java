@@ -1,5 +1,6 @@
 import DriverSingleton.DriverSingleton;
 import Service.TestDataReader;
+
 import Utils.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WindowType;
@@ -26,7 +27,7 @@ public class GoogleCloudCalculatorTest {
         DriverSingleton.closeDriver();
     }
     @Test
-    void testSearch(){
+    public void testSearch(){
          Optional<GoogleCloudCalculator> googleCalculator = new GoogleCloudHome(driver)
                 .openPage()
                 .search(CALCULATOR_TITLE)
@@ -35,12 +36,12 @@ public class GoogleCloudCalculatorTest {
 
     }
     @Test
-    void testMail(){
+    public void testMail(){
         String mail = new YopMail(driver).openPage().openInbox().getAdress();
         Assert.assertTrue(mail.contains("@yopmail.com"));
     }
     @Test
-    void testCalculator(){
+    public void testCalculator(){
         String estimate = new GoogleCloudCalculator(driver)
                 .openPage()
                 .selectComputerEngine()
@@ -58,7 +59,7 @@ public class GoogleCloudCalculatorTest {
         Assert.assertTrue(!estimate.isEmpty());
     }
     @Test
-    void testEmailEstimate(){
+    public void testEmailEstimate(){
         GoogleCloudCalculator calculator= new GoogleCloudCalculator(driver)
                 .openPage()
                 .selectComputerEngine()
