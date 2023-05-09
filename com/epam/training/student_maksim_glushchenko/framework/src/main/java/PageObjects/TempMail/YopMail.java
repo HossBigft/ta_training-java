@@ -1,5 +1,6 @@
 package PageObjects.TempMail;
 
+import Service.PageFailedToLoadException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -30,13 +31,14 @@ public class YopMail {
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofMillis(500));
     }
-    public YopMail openPage(){
+    public YopMail openPage() {
         driver.get(URL);
         try{
         wait.until(ExpectedConditions.elementToBeClickable(inboxButtonBy));
         } catch (
         TimeoutException e){
             log.error("Failed to load yopmail: " + e.getLocalizedMessage());
+            throw new PageFailedToLoadException("Failed to load yopmail: " + e.getLocalizedMessage(), e);
         }
         return this;
     }

@@ -1,5 +1,4 @@
 import DriverSingleton.DriverSingleton;
-import Service.TestDataReader;
 
 import Utils.TestListener;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import PageObjects.Google.GoogleCloudCalculator;
+import PageObjects.Google.Calculator.GoogleCloudCalculator;
 import PageObjects.Google.GoogleCloudHome;
 import PageObjects.TempMail.YopMail;
 
@@ -44,35 +43,18 @@ public class GoogleCloudCalculatorTest {
     public void testCalculator(){
         String estimate = new GoogleCloudCalculator(driver)
                 .openPage()
-                .selectComputerEngine()
-                .withNumberOfInstances(TestDataReader.getTestData("test.data.numberOfInstances"))
-                .withFreeOrBYOLOperatingSystem()
-                .withRegularVM()
-                .withSeries1n()
-                .withInstanceTypeN1Standard8()
-                .withOneTeslaV100GPU()
-                .withTwo375GbSSD()
-                .withEuropeWest3DataCenter()
-                .withOneYearUsage()
-                .addToEstimate()
+                .createValidInstance()
+                .estimate()
                 .getEstimateValue();
         Assert.assertTrue(!estimate.isEmpty());
     }
+
     @Test
-    public void testEmailEstimate(){
-        GoogleCloudCalculator calculator= new GoogleCloudCalculator(driver)
+    public void testEmailEstimate() {
+        GoogleCloudCalculator calculator = new GoogleCloudCalculator(driver)
                 .openPage()
-                .selectComputerEngine()
-                .withNumberOfInstances(TestDataReader.getTestData("test.data.numberOfInstances"))
-                .withFreeOrBYOLOperatingSystem()
-                .withRegularVM()
-                .withSeries1n()
-                .withInstanceTypeN1Standard8()
-                .withOneTeslaV100GPU()
-                .withTwo375GbSSD()
-                .withEuropeWest3DataCenter()
-                .withOneYearUsage()
-                .addToEstimate();
+                .createValidInstance()
+                .estimate();
         String estimate = calculator.getEstimateValue();
         String calcTab = driver.getWindowHandle();
         driver.switchTo().newWindow(WindowType.TAB);
